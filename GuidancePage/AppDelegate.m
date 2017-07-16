@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "StartAdController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    self.window = [[UIWindow alloc] init];
+    [self.window setRootViewController:[[ViewController alloc] init]];
+    [self.window makeKeyAndVisible];
+    NSLog(@"application-window:%@", self.window);
+    
+    StartAdController *controller = [[StartAdController alloc] init];
+    [controller showCustomAdvertiseAtStartWithAppDescImageToScreenScale:0.f];
+    
     return YES;
 }
 
