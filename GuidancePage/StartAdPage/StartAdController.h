@@ -10,6 +10,6 @@
 
 @interface StartAdController : UIViewController
 
-- (void)showCustomAdvertiseAtStartWithAppDescImageToScreenScale:(float)scale;
+- (void)showCustomAdvertiseAtStartAllowSkip:(BOOL)skip WithTimeInterval:(NSTimeInterval)timeInterval;
 
 @end

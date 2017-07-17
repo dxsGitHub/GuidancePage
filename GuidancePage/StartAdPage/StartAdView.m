@@ -39,9 +39,13 @@
 - (UILabel *)timerLab {
     if (!_timerLab) {
         _timerLab = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.frame) - kLabMarginToSuperView - kLabWidth, CGRectGetMinY(self.frame) + kLabMarginToSuperView, kLabWidth, kLabWidth)];
+        [_timerLab.layer setMasksToBounds:YES];
+        [_timerLab setUserInteractionEnabled:YES];
+        [_timerLab setTextColor:[UIColor whiteColor]];
+        [_timerLab.layer setCornerRadius:kLabWidth/2];
+        [_timerLab setFont:[UIFont systemFontOfSize:18]];
+        [_timerLab setTextAlignment:NSTextAlignmentCenter];
         [_timerLab setBackgroundColor:[UIColor darkGrayColor]];
-        _timerLab.layer.masksToBounds = YES;
-        _timerLab.layer.cornerRadius = kLabWidth/2;
     }
     return _timerLab;
 }

@@ -46,7 +46,6 @@ NSString * const kLastVersionKey = @"kLastVersionKey";
     GuidancePageController *controller_scroll = [[GuidancePageController alloc] initPagesButtonImageWithArray:@[@"GuidancePage.bundle/Image1", @"GuidancePage.bundle/Image2", @"GuidancePage.bundle/Image3", @"GuidancePage.bundle/Image4",@"GuidancePage.bundle/hidden"] enterStyle:ENTER_SCROLL];
     
     __weak typeof(self)weakSelf = self;
-    //点击进入主界面 / 滑动进入主界面  controller_click 和 controller_scroll替换即可
     controller_scroll.hiddeGuidanceWindow = ^{
         
         NSString* curtVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];

@@ -18,6 +18,20 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view, typically from a nib.
+    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100)];
+    [lab setCenter:self.view.center];
+    lab.text = @"主界面";
+    lab.textAlignment = NSTextAlignmentCenter;
+    lab.font = [UIFont systemFontOfSize:20];
+    [self.view addSubview:lab];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self prefersStatusBarHidden];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
 }
 
 

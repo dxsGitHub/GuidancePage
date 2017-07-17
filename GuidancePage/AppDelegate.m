@@ -22,10 +22,9 @@
     self.window = [[UIWindow alloc] init];
     [self.window setRootViewController:[[ViewController alloc] init]];
     [self.window makeKeyAndVisible];
-    NSLog(@"application-window:%@", self.window);
     
     StartAdController *controller = [[StartAdController alloc] init];
-    [controller showCustomAdvertiseAtStartWithAppDescImageToScreenScale:0.f];
+    [controller showCustomAdvertiseAtStartAllowSkip:NO WithTimeInterval:5.f];
     
     return YES;
 }
