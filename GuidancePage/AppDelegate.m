@@ -16,6 +16,7 @@
 
 @implementation AppDelegate
 
+extern NSString *const kLastVersionKey;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
@@ -23,9 +24,13 @@
     [self.window setRootViewController:[[ViewController alloc] init]];
     [self.window makeKeyAndVisible];
     
-    StartAdController *controller = [[StartAdController alloc] init];
-    [controller showCustomAdvertiseAtStartAllowSkip:NO WithTimeInterval:5.f];
-    
+    NSString* lastVersion = [[NSUserDefaults standardUserDefaults] stringForKey:kLastVersionKey];
+    NSString* currentVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+    if (lastVersion && [lastVersion isEqualToString:currentVersion]) {
+        StartAdController *controller = [[StartAdController alloc] init];
+        [controller showCustomAdvertiseAtStartAllowSkip:YES timeInterval:10.f adAllowTouch:YES adInfoDictionary:@{@"imageURL":@"http://d.hiphotos.baidu.com/zhidao/pic/item/e61190ef76c6a7eff535cd85fcfaaf51f3de6605.jpg", @"detailURL":@"https:www.baidu.com"}];
+    }
+
     return YES;
 }
 

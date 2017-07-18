@@ -10,6 +10,6 @@
 
 @interface StartAdController : UIViewController
 
-- (void)showCustomAdvertiseAtStartAllowSkip:(BOOL)skip WithTimeInterval:(NSTimeInterval)timeInterval;
+- (void)showCustomAdvertiseAtStartAllowSkip:(BOOL)skip timeInterval:(NSTimeInterval)timeInterval adAllowTouch:(BOOL)enableTouch adInfoDictionary:(NSDictionary *)infoDic;
 
 @end

@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D2219961F1E658D00D248AC /* UIProgressView+customProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2219951F1E658D00D248AC /* UIProgressView+customProgress.m */; };
 		9DAD597B1F18BB770035E48B /* bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAD597A1F18BB770035E48B /* bottom.png */; };
 		9DFCD30D1F18BE4E007B82CF /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCD30C1F18BE4E007B82CF /* top.png */; };
 		9DFE8EAD1F199CFB00F64943 /* StartAdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE8EAC1F199CFB00F64943 /* StartAdController.m */; };
 		9DFE8EB01F199D0D00F64943 /* StartAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE8EAF1F199D0D00F64943 /* StartAdView.m */; };
+		9DFE8EB61F1DA7B800F64943 /* StartAdDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE8EB51F1DA7B800F64943 /* StartAdDetailController.m */; };
+		9DFE8EB81F1DB51300F64943 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE8EB71F1DB51300F64943 /* back@2x.png */; };
+		9DFE8EBA1F1DC05300F64943 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE8EB91F1DC05300F64943 /* share@2x.png */; };
+		9DFE8EBD1F1E2C5D00F64943 /* StartAdDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE8EBC1F1E2C5D00F64943 /* StartAdDetailView.m */; };
 		9DFF7B8D1F05F0B50027B2A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF7B8C1F05F0B50027B2A7 /* main.m */; };
 		9DFF7B901F05F0B50027B2A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF7B8F1F05F0B50027B2A7 /* AppDelegate.m */; };
 		9DFF7B931F05F0B50027B2A7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF7B921F05F0B50027B2A7 /* ViewController.m */; };
@@ -24,12 +29,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D2219941F1E658D00D248AC /* UIProgressView+customProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+customProgress.h"; sourceTree = "<group>"; };
+		9D2219951F1E658D00D248AC /* UIProgressView+customProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+customProgress.m"; sourceTree = "<group>"; };
 		9DAD597A1F18BB770035E48B /* bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom.png; sourceTree = "<group>"; };
 		9DFCD30C1F18BE4E007B82CF /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
 		9DFE8EAB1F199CFB00F64943 /* StartAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAdController.h; sourceTree = "<group>"; };
 		9DFE8EAC1F199CFB00F64943 /* StartAdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartAdController.m; sourceTree = "<group>"; };
 		9DFE8EAE1F199D0D00F64943 /* StartAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAdView.h; sourceTree = "<group>"; };
 		9DFE8EAF1F199D0D00F64943 /* StartAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartAdView.m; sourceTree = "<group>"; };
+		9DFE8EB41F1DA7B800F64943 /* StartAdDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAdDetailController.h; sourceTree = "<group>"; };
+		9DFE8EB51F1DA7B800F64943 /* StartAdDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartAdDetailController.m; sourceTree = "<group>"; };
+		9DFE8EB71F1DB51300F64943 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		9DFE8EB91F1DC05300F64943 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
+		9DFE8EBB1F1E2C5D00F64943 /* StartAdDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAdDetailView.h; sourceTree = "<group>"; };
+		9DFE8EBC1F1E2C5D00F64943 /* StartAdDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartAdDetailView.m; sourceTree = "<group>"; };
 		9DFF7B881F05F0B50027B2A7 /* GuidancePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuidancePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFF7B8C1F05F0B50027B2A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9DFF7B8E1F05F0B50027B2A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D2219931F1E655A00D248AC /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				9D2219941F1E658D00D248AC /* UIProgressView+customProgress.h */,
+				9D2219951F1E658D00D248AC /* UIProgressView+customProgress.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		9DFE8EAA1F199CE800F64943 /* StartAdPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +89,10 @@
 				9DFE8EAF1F199D0D00F64943 /* StartAdView.m */,
 				9DFE8EAB1F199CFB00F64943 /* StartAdController.h */,
 				9DFE8EAC1F199CFB00F64943 /* StartAdController.m */,
+				9DFE8EBB1F1E2C5D00F64943 /* StartAdDetailView.h */,
+				9DFE8EBC1F1E2C5D00F64943 /* StartAdDetailView.m */,
+				9DFE8EB41F1DA7B800F64943 /* StartAdDetailController.h */,
+				9DFE8EB51F1DA7B800F64943 /* StartAdDetailController.m */,
 			);
 			path = StartAdPage;
 			sourceTree = "<group>";
@@ -90,6 +116,7 @@
 		9DFF7B8A1F05F0B50027B2A7 /* GuidancePage */ = {
 			isa = PBXGroup;
 			children = (
+				9D2219931F1E655A00D248AC /* Category */,
 				9DFE8EAA1F199CE800F64943 /* StartAdPage */,
 				9DFF7BA21F05F0CD0027B2A7 /* GuidancePage */,
 				9DFF7B8E1F05F0B50027B2A7 /* AppDelegate.h */,
@@ -100,6 +127,8 @@
 				9DFF7B971F05F0B50027B2A7 /* Assets.xcassets */,
 				9DFF7B991F05F0B50027B2A7 /* LaunchScreen.storyboard */,
 				9DAD597A1F18BB770035E48B /* bottom.png */,
+				9DFE8EB71F1DB51300F64943 /* back@2x.png */,
+				9DFE8EB91F1DC05300F64943 /* share@2x.png */,
 				9DFCD30C1F18BE4E007B82CF /* top.png */,
 				9DFF7B9C1F05F0B50027B2A7 /* Info.plist */,
 				9DFF7B8B1F05F0B50027B2A7 /* Supporting Files */,
@@ -192,6 +221,8 @@
 				9DFF7BAB1F05F0CD0027B2A7 /* GuidancePage.bundle in Resources */,
 				9DFF7B9B1F05F0B50027B2A7 /* LaunchScreen.storyboard in Resources */,
 				9DFF7B981F05F0B50027B2A7 /* Assets.xcassets in Resources */,
+				9DFE8EB81F1DB51300F64943 /* back@2x.png in Resources */,
+				9DFE8EBA1F1DC05300F64943 /* share@2x.png in Resources */,
 				9DFCD30D1F18BE4E007B82CF /* top.png in Resources */,
 				9DFF7B961F05F0B50027B2A7 /* Main.storyboard in Resources */,
 				9DAD597B1F18BB770035E48B /* bottom.png in Resources */,
@@ -209,6 +240,9 @@
 				9DFF7B931F05F0B50027B2A7 /* ViewController.m in Sources */,
 				9DFE8EAD1F199CFB00F64943 /* StartAdController.m in Sources */,
 				9DFF7BAA1F05F0CD0027B2A7 /* AppDelegate+GuidancePage.m in Sources */,
+				9DFE8EB61F1DA7B800F64943 /* StartAdDetailController.m in Sources */,
+				9D2219961F1E658D00D248AC /* UIProgressView+customProgress.m in Sources */,
+				9DFE8EBD1F1E2C5D00F64943 /* StartAdDetailView.m in Sources */,
 				9DFF7B901F05F0B50027B2A7 /* AppDelegate.m in Sources */,
 				9DFF7BAC1F05F0CD0027B2A7 /* GuidancePageController.m in Sources */,
 				9DFE8EB01F199D0D00F64943 /* StartAdView.m in Sources */,

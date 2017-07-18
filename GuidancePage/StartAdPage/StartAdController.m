@@ -10,16 +10,20 @@
 
 #import "StartAdView.h"
 #import <objc/runtime.h>
+#import "StartAdDetailController.h"
 
 @interface StartAdController ()
 
 @property (strong, nonatomic) StartAdView *adView;
 @property (strong, nonatomic) NSTimer *timer;
 @property (assign, nonatomic) NSTimeInterval countDown;
+@property (strong, nonatomic) StartAdDetailController *controller;
 
 @end
 
-static const char kAssociateKey;
+static const char kAssociateKeyAdEnableSkip;
+static const char kAssociateKeyAdEnableTouch;
+static const char kAssociateKeyAdInfo;
 
 @implementation StartAdController
 
@@ -38,16 +42,34 @@ static const char kAssociateKey;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([objc_getAssociatedObject(self, &kAssociateKey) boolValue]) {
+    if ([objc_getAssociatedObject(self, &kAssociateKeyAdEnableSkip) boolValue]) {
        [[_adView valueForKey:@"timerLab"] addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTimerLabAction:)]];
     }
+    
+    if ([objc_getAssociatedObject(self, &kAssociateKeyAdEnableTouch) boolValue]) {
+        [[_adView valueForKey:@"adImageView"] addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAdImageAction:)]];
+    }
+    
+    if (objc_getAssociatedObject(self, &kAssociateKeyAdInfo)) {
+        NSDictionary *dict = objc_getAssociatedObject(self, &kAssociateKeyAdInfo);
+        UIImageView *adImageView = [_adView valueForKey:@"adImageView"];
+        [adImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dict valueForKey:@"imageURL"]]]]];
+    }
+    
+    
+    
     [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar+1];
 }
 
-- (void)showCustomAdvertiseAtStartAllowSkip:(BOOL)skip WithTimeInterval:(NSTimeInterval)timeInterval {
+- (void)showCustomAdvertiseAtStartAllowSkip:(BOOL)skip timeInterval:(NSTimeInterval)timeInterval adAllowTouch:(BOOL)enableTouch adInfoDictionary:(NSDictionary *)infoDic{
     
     _countDown = timeInterval;
-    objc_setAssociatedObject(self, &kAssociateKey, [NSNumber numberWithBool:skip], OBJC_ASSOCIATION_ASSIGN);
+    
+    objc_setAssociatedObject(self, &kAssociateKeyAdEnableSkip, [NSNumber numberWithBool:skip], OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &kAssociateKeyAdEnableTouch, [NSNumber numberWithBool:enableTouch], OBJC_ASSOCIATION_ASSIGN);
+    if (infoDic) {
+        objc_setAssociatedObject(self, &kAssociateKeyAdInfo, infoDic, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    }
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     [window addSubview:self.view];
@@ -76,6 +98,20 @@ static const char kAssociateKey;
     [self disappearAnimation];
 }
 
+- (void)tapAdImageAction:(UITapGestureRecognizer*)sender {
+    if (_timer) {
+        _countDown = MAXFLOAT;
+    }
+    _controller = [[StartAdDetailController alloc] init];
+    __weak NSTimer *blockTimer = _timer;
+    __weak typeof(self) weakSelf = self;
+    _controller.backClickBlock = ^{
+        [weakSelf.view removeFromSuperview];
+        [blockTimer invalidate];
+    };
+    [_controller showAdDetailView];
+}
+
 - (void)disappearAnimation {
     [UIView animateWithDuration:0.5f animations:^{
         [self.view setAlpha:0.01f];
@@ -86,6 +122,7 @@ static const char kAssociateKey;
 }
 
 - (void)dealloc {
+    NSLog(@"停止计时器，销毁self");
     [_timer invalidate];
     _timer = nil;
 }
