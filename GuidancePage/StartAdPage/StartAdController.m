@@ -58,8 +58,6 @@ static const char kAssociateKeyCircleBezirePath;
         [adImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dict valueForKey:@"imageURL"]]]]];
     }
     
-    
-    
     [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar+1];
 }
 
