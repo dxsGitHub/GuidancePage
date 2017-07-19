@@ -14,16 +14,18 @@
 
 @interface StartAdController ()
 
-@property (strong, nonatomic) StartAdView *adView;
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) StartAdView *adView;
+@property (strong, nonatomic) NSTimer *circlePathTimer;
 @property (assign, nonatomic) NSTimeInterval countDown;
+@property (strong, nonatomic) CAShapeLayer *shapeLayer;
 @property (strong, nonatomic) StartAdDetailController *controller;
-
 @end
 
+static const char kAssociateKeyAdInfo;
 static const char kAssociateKeyAdEnableSkip;
 static const char kAssociateKeyAdEnableTouch;
-static const char kAssociateKeyAdInfo;
+static const char kAssociateKeyCircleBezirePath;
 
 @implementation StartAdController
 
@@ -43,7 +45,7 @@ static const char kAssociateKeyAdInfo;
     [super viewDidLoad];
     
     if ([objc_getAssociatedObject(self, &kAssociateKeyAdEnableSkip) boolValue]) {
-       [[_adView valueForKey:@"timerLab"] addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTimerLabAction:)]];
+        [[_adView valueForKey:@"timerLab"] addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTimerLabAction:)]];
     }
     
     if ([objc_getAssociatedObject(self, &kAssociateKeyAdEnableTouch) boolValue]) {
@@ -76,29 +78,48 @@ static const char kAssociateKeyAdInfo;
     [window bringSubviewToFront:self.view];
     
     _timer = [NSTimer timerWithTimeInterval:1.f target:self selector:@selector(timerLabShowCountdownAction:) userInfo:nil repeats:YES];
+    objc_setAssociatedObject(_timer, &kAssociateKeyAdEnableSkip, [NSNumber numberWithBool:skip], OBJC_ASSOCIATION_ASSIGN);
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     [_timer fire];
     
+    _circlePathTimer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(circleBezierpathAnimation:) userInfo:nil repeats:YES];
+    [self circleBezierPathForView:(UIView*)[_adView valueForKey:@"timerLab"]];
+    objc_setAssociatedObject(self, &kAssociateKeyCircleBezirePath, [NSNumber numberWithFloat:timeInterval * 10], OBJC_ASSOCIATION_ASSIGN);
+    
 }
 
-- (void)timerLabShowCountdownAction:(NSTimer*)timer {
+- (void)timerLabShowCountdownAction:(NSTimer *)timer {
 
     if (_countDown == 0) {
         [_timer invalidate];
         [self disappearAnimation];
     } else {
         UILabel *lab = [_adView valueForKey:@"timerLab"];
-        [lab setText:[NSString stringWithFormat:@"%d",(int)_countDown]];
+        if ([objc_getAssociatedObject(_timer, &kAssociateKeyAdEnableSkip) boolValue]) {
+            [lab setText:@"跳过"];
+        } else {
+            [lab setText:[NSString stringWithFormat:@"%d",(int)_countDown]];
+        }
         _countDown--;
     }
     
 }
 
-- (void)tapTimerLabAction:(UITapGestureRecognizer*)sender {
+- (void)circleBezierpathAnimation:(NSTimer *)timer {
+    NSNumber *num = objc_getAssociatedObject(self, &kAssociateKeyCircleBezirePath);
+    if (!(_shapeLayer.strokeEnd < 1.0f)) {
+        [_circlePathTimer invalidate];
+        _circlePathTimer = nil;
+    }else {
+        _shapeLayer.strokeEnd = _shapeLayer.strokeEnd + 1/[num floatValue];
+    }
+}
+
+- (void)tapTimerLabAction:(UITapGestureRecognizer *)sender {
     [self disappearAnimation];
 }
 
-- (void)tapAdImageAction:(UITapGestureRecognizer*)sender {
+- (void)tapAdImageAction:(UITapGestureRecognizer *)sender {
     if (_timer) {
         _countDown = MAXFLOAT;
     }
@@ -121,14 +142,42 @@ static const char kAssociateKeyAdInfo;
     }];
 }
 
-- (void)dealloc {
-    NSLog(@"停止计时器，销毁self");
-    [_timer invalidate];
-    _timer = nil;
+
+-(void)circleBezierPathForView:(UIView *)view{
+    //创建出CAShapeLayer
+    self.shapeLayer = [CAShapeLayer layer];
+    [self.shapeLayer setFrame:CGRectZero];
+    self.shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    
+    //设置线条的宽度和颜色
+    self.shapeLayer.lineWidth = 3.0f;
+    self.shapeLayer.strokeColor = [UIColor redColor].CGColor;
+    
+    //设置stroke起始点
+    self.shapeLayer.strokeStart = 0.f;
+    self.shapeLayer.strokeEnd = 0.f;
+    
+    //创建出圆形贝塞尔曲线
+    UIBezierPath *circlePath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
+    
+    //让贝塞尔曲线与CAShapeLayer产生联系
+    self.shapeLayer.path = circlePath.CGPath;
+    
+    //添加并显示
+    [view.layer addSublayer:self.shapeLayer];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc {
+    NSLog(@"停止计时器，销毁self");
+    [_timer invalidate];
+    _timer = nil;
+    
+    [_circlePathTimer invalidate];
+    _circlePathTimer = nil;
 }
 
 /*

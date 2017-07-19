@@ -7,9 +7,8 @@
 //
 
 #import "StartAdView.h"
-#import "UIProgressView+customProgress.h"
 
-#define kLabWidth                     30
+#define kLabWidth                     33
 #define kLabMarginToSuperView         20
 #define kAppDescScaleToScreen         1/5.f
 #define kContainerScaleToScreen    4/5.f
@@ -24,7 +23,6 @@
 @property (strong, nonatomic) UIView *containerView;
 @property (strong, nonatomic) UIImageView *adImageView;
 @property (strong, nonatomic) UIImageView *appDescImageView;
-@property (strong, nonatomic) UIProgressView *timerProgress;
 
 @end
 
@@ -53,20 +51,12 @@
     return _timerLab;
 }
 
-- (UIProgressView *)timerProgress {
-    if (!_timerProgress) {
-        _timerProgress = [[UIProgressView alloc] initWithFrame:CGRectMake(CGRectGetMinX(_timerLab.frame), CGRectGetMinY(_timerLab.frame), CGRectGetWidth(_timerLab.frame), CGRectGetHeight(_timerLab.frame))];
-        _timerProgress.progress = 0.3f;
-    }
-    return _timerProgress;
-}
 
 - (UIView *)containerView {
     if (!_containerView) {
         _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight * kContainerScaleToScreen)];
         [_containerView addSubview:self.adImageView];
         [_containerView addSubview:self.timerLab];
-//        [_containerView addSubview:self.timerProgress];
     }
     return _containerView;
 }

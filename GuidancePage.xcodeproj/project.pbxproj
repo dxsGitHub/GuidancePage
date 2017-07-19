@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D2219961F1E658D00D248AC /* UIProgressView+customProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2219951F1E658D00D248AC /* UIProgressView+customProgress.m */; };
 		9DAD597B1F18BB770035E48B /* bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAD597A1F18BB770035E48B /* bottom.png */; };
 		9DFCD30D1F18BE4E007B82CF /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCD30C1F18BE4E007B82CF /* top.png */; };
 		9DFE8EAD1F199CFB00F64943 /* StartAdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE8EAC1F199CFB00F64943 /* StartAdController.m */; };
@@ -29,8 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9D2219941F1E658D00D248AC /* UIProgressView+customProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+customProgress.h"; sourceTree = "<group>"; };
-		9D2219951F1E658D00D248AC /* UIProgressView+customProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+customProgress.m"; sourceTree = "<group>"; };
 		9DAD597A1F18BB770035E48B /* bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom.png; sourceTree = "<group>"; };
 		9DFCD30C1F18BE4E007B82CF /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
 		9DFE8EAB1F199CFB00F64943 /* StartAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAdController.h; sourceTree = "<group>"; };
@@ -76,8 +73,6 @@
 		9D2219931F1E655A00D248AC /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				9D2219941F1E658D00D248AC /* UIProgressView+customProgress.h */,
-				9D2219951F1E658D00D248AC /* UIProgressView+customProgress.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -241,7 +236,6 @@
 				9DFE8EAD1F199CFB00F64943 /* StartAdController.m in Sources */,
 				9DFF7BAA1F05F0CD0027B2A7 /* AppDelegate+GuidancePage.m in Sources */,
 				9DFE8EB61F1DA7B800F64943 /* StartAdDetailController.m in Sources */,
-				9D2219961F1E658D00D248AC /* UIProgressView+customProgress.m in Sources */,
 				9DFE8EBD1F1E2C5D00F64943 /* StartAdDetailView.m in Sources */,
 				9DFF7B901F05F0B50027B2A7 /* AppDelegate.m in Sources */,
 				9DFF7BAC1F05F0CD0027B2A7 /* GuidancePageController.m in Sources */,
